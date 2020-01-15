@@ -54,6 +54,13 @@ public class AnimalRessourceTest {
         assertEquals(0, animaux.size());
     }
 
+    @Test
+    public void getOne() {
+        Animal animal = new Animal(Especes.INSECTE,"name", "sexe", "arrive", "depart");
+
+        Animal a = this.restTemplate.getForObject("http://localhost:" + port + "/animaux/1", Animal.class);
+    }
+
 
 
 }
