@@ -1,23 +1,28 @@
-package modele;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+package fr.modele;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.util.Objects;
+import static javax.persistence.GenerationType.AUTO;
+
 
 @Entity
 public class Animal {
     @Id
-    private long id;
+    @GeneratedValue(strategy = AUTO)
+    private Long id;
     private Especes espece;
     private String name;
-    private char sexe;
-    private Date arrive;
-    private Date depart;
+    private String sexe;
+    private String arrive;
+    private String depart;
 
-    public Animal(long id, Especes espece, String name, char sexe, Date arrive, Date depart) {
-        this.id = id;
+    public Animal() {
+
+    }
+
+    public Animal(Especes espece, String name, String sexe, String arrive, String depart) {
         this.espece = espece;
         this.name = name;
         this.sexe = sexe;
@@ -25,7 +30,7 @@ public class Animal {
         this.depart = depart;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,19 +42,19 @@ public class Animal {
         return name;
     }
 
-    public char getSexe() {
+    public String  getSexe() {
         return sexe;
     }
 
-    public Date getArrive() {
+    public String  getArrive() {
         return arrive;
     }
 
-    public Date getDepart() {
+    public String getDepart() {
         return depart;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,16 +66,21 @@ public class Animal {
         this.name = name;
     }
 
-    public void setSexe(char sexe) {
+    public void setSexe(String  sexe) {
         this.sexe = sexe;
     }
 
-    public void setArrive(Date arrive) {
+    public void setArrive(String  arrive) {
         this.arrive = arrive;
     }
 
-    public void setDepart(Date depart) {
+    public void setDepart(String  depart) {
         this.depart = depart;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, espece, name, sexe, arrive, depart);
     }
 }
 

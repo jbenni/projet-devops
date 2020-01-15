@@ -1,9 +1,11 @@
-package service;
+package fr.service;
 
-import modele.Animal;
+import fr.modele.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AnimalRepository;
+import fr.repository.AnimalRepository;
+
+import java.util.Optional;
 
 @Service
 public class AnimalService {
@@ -18,7 +20,8 @@ public class AnimalService {
         return animalRepository.save(animal);
     }
 
-    public Animal getAnimal(Long id) {
-        return animalRepository.getOne(id);
+    public Optional<Animal> getOne(Long id) {
+
+        return animalRepository.findById(id);
     }
 }
