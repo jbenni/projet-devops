@@ -41,6 +41,13 @@ public class AnimalRessourceTest {
         Animal animal =new Animal(Especes.INSECTE,"name", "sexe", "arrive", "depart");
     }
 
+    @Test
+    public void postAnimal() {
+        Animal animal = new Animal(Especes.INSECTE,"name", "sexe", "arrive", "depart");
+        animal.setId(1L);
+        when(animalRepository.save(animal)).thenReturn(animal);
+    }
+
 
 
 }
