@@ -48,6 +48,12 @@ public class AnimalRessourceTest {
         when(animalRepository.save(animal)).thenReturn(animal);
     }
 
+    @Test
+    public void getAll() throws Exception {
+        List<Animal> animaux = this.restTemplate.getForObject("http://localhost:" + port + "/animaux", List.class);
+        assertEquals(0, animaux.size());
+    }
+
 
 
 }
